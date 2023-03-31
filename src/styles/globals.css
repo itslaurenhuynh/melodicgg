@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  background-color: #BDCDD6;
+  color: #EEE9DA;
+  font-family: 'Noto Sans';
+}
