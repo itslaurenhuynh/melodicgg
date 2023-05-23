@@ -2,27 +2,25 @@ import { useState, useEffect } from "react";
 
 export default function Profile() {
   const [profile, setProfile] = useState(null);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
-  if (typeof window !== "undefined") {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
     const accessToken = localStorage.getItem("access_token");
-    useEffect(() => {
-      setLoading(true);
-      fetch("https://api.spotify.com/v1/me", {
-        headers: {
-          Authorization: "Bearer " + accessToken,
-        },
-      })
-        .then((res) => res.json())
-        .then((profile) => {
-          setProfile(profile);
-          setLoading(false);
-        });
-    }, []);
-    if (isLoading) return <p>Loading...</p>;
-    if (!profile) return <p>No profile data</p>;
-  }
+    fetch("https://api.spotify.com/v1/me", {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    })
+      .then((res) => res.json())
+      .then((profile) => {
+        setProfile(profile);
+        setLoading(false);
+      });
+  }, []);
 
+  if (isLoading) return <p>Loading...</p>;
+  if (!profile) return <p>No profile data</p>;
   return (
     <div className="flex flex-row flex-nowrap bg-main-blue rounded-2xl self-start">
       <div className="p-2">
