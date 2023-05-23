@@ -6,6 +6,7 @@ export default function Call() {
     const urlParams = new URLSearchParams(window.location.search);
     let code = urlParams.get("code");
 
+    if (typeof window === "undefined") return;
     let codeVerifier = localStorage.getItem("code_verifier");
     const url = process.env.NEXT_PUBLIC_URL;
     const redirectUri = `${url}/callback`;
