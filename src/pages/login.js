@@ -1,12 +1,16 @@
 import { generateRandomString } from "@/utils/spotify";
 import { generateCodeChallenge } from "@/utils/spotify";
 
+const url = process.env.NEXT_PUBLIC_URL;
+
+if (!url) throw "must set url env var";
+
 export default function Login() {
   return (
     <button
       onClick={() => {
         const clientId = process.env.NEXT_PUBLIC_client_id;
-        const url = process.env.NEXT_PUBLIC_URL;
+
         const redirectUri = `${url}/callback`;
 
         let codeVerifier = generateRandomString(128);
