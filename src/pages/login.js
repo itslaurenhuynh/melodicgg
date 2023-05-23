@@ -6,7 +6,8 @@ export default function Login() {
     <button
       onClick={() => {
         const clientId = process.env.NEXT_PUBLIC_client_id;
-        const redirectUri = "http://localhost:3000/callback";
+        const url = process.env.NEXT_PUBLIC_URL;
+        const redirectUri = `${url}/callback`;
 
         let codeVerifier = generateRandomString(128);
 

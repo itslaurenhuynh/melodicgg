@@ -7,11 +7,13 @@ export default function Call() {
     let code = urlParams.get("code");
 
     let codeVerifier = localStorage.getItem("code_verifier");
+    const url = process.env.NEXT_PUBLIC_URL;
+    const redirectUri = `${url}/callback`;
 
     let body = new URLSearchParams({
       grant_type: "authorization_code",
       code: code,
-      redirect_uri: "http://localhost:3000/callback",
+      redirect_uri: redirectUri,
       client_id: process.env.NEXT_PUBLIC_client_id,
       code_verifier: codeVerifier,
     });
