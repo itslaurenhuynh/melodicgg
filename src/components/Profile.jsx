@@ -24,7 +24,7 @@ export default function Profile() {
   return (
     <div className="flex flex-row flex-nowrap bg-main-blue rounded-2xl self-start">
       <div className="p-2">
-        <img className="rounded-full h-24" src="/pic.jpg" />
+        <img className="rounded-full h-24" src={profile.images[0].url} />
       </div>
       <div className="p-3 pr-4">
         <p id="displayName">{profile.display_name}</p>
